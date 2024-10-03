@@ -1,23 +1,38 @@
-// Setup Guidelines and Instructions
-// You have three files: index.html, styles.css, and script.js.
-// The HTML file contains the basic structure of the timer application.
-// Use CSS for styling the timer and buttons.
-// JavaScript will handle the timer functionality.
-// Problem Statement
-// Your task is to create a timer application with the following features:
+let [minutesMM,secondSS] = [document.getElementById('MM'),document.getElementById('SS')]
 
-// Display:
+let timerInterval;
 
-// The timer should be displayed in minutes and seconds (MM:SS format).
-// Initial value: 00:00.
-// Buttons:
 
-// Start: Begins the timer.
-// Stop: Pauses the timer.
-// Reset: Resets the timer to 00:00.
-// Functionality:
+document.getElementById('start').addEventListener('click',()=>{
+    
+    let [minutes,second] = [parseInt(minutesMM.textContent),parseInt(secondSS.textContent)]
 
-// The timer should increment every second when the Start button is clicked.
-// Clicking the Stop button should pause the timer.
-// Clicking the Reset button should set the timer back to 00:00.
-// The timer should not reset when stopped; it should resume from where it left off when started again.
+    if(!timerInterval){
+        timerInterval = setInterval(()=>{
+            second++
+            if(second == 60){
+                second = 0
+                minutes++
+                minutesMM.textContent = minutes < 10?'0'+minutes:minutes
+            }
+            secondSS.textContent = second < 10? '0'+second:second
+
+            document.getElementById('stop').addEventListener('click',(e)=>{
+                e.preventDefault()
+                clearInterval(timerInterval)
+                timerInterval = null
+            })
+        },1000)
+}
+            
+})
+
+document.getElementById('reset').addEventListener('click',()=>{
+    clearInterval(timerInterval)
+    timerInterval = null
+    minutesMM.textContent = '00'
+    secondSS.textContent = '00'
+})
+
+
+
