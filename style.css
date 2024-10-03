@@ -1,0 +1,38 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#main{
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+
+.clock{
+    font-size: 33px;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btns > button{
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btns > button:hover{
+    color: white;
+    background-color: rgb(234, 66, 66);
+    font-style: italic;
+}
+
+
+
+    
